@@ -31,7 +31,7 @@ engine:                            # Engine settings.
     resign_moves: 3                # How many moves in a row the score has to be below the resign value.
     offer_draw_enabled: false      # Whether or not the bot should offer/accept draw.
     offer_draw_score: 0            # If the absolute value of the score is less than or equal to this value, the bot offers/accepts draw (in cp).
-    offer_draw_for_egtb_zero: false # If true the bot will offer/accept draw in positions where the online_egtb returns a wdl of 0.
+    offer_draw_for_egtb_zero: true # If true the bot will offer/accept draw in positions where the online_egtb returns a wdl of 0.
     offer_draw_moves: 10           # How many moves in a row the absolute value of the score has to be below the draw value.
     offer_draw_pieces: 10          # Only if the pieces on board are less than or equal to this value, the bot offers/accepts draw.
 
@@ -40,9 +40,9 @@ engine:                            # Engine settings.
     max_retries: 2                 # The maximum amount of retries when getting an online move.
     # max_depth: 10                # How many moves from the start to take from online books. Default is no limit.
     chessdb_book:
-      enabled: true               # Whether or not to use chessdb book.
+      enabled: false               # Whether or not to use chessdb book.
       min_time: 20                 # Minimum time (in seconds) to use chessdb book.
-      move_quality: "best"         # One of "all", "good", "best".
+      move_quality: "good"         # One of "all", "good", "best".
       min_depth: 20                # Only for move_quality: "best".
     lichess_cloud_analysis:
       enabled: true                # Whether or not to use lichess cloud analysis.
@@ -125,13 +125,13 @@ correspondence:
   ponder: false                    # Ponder in correspondence games the bot is connected to.
 
 challenge:                         # Incoming challenges.
-  concurrency: 5                   # Number of games to play simultaneously.
+  concurrency: 10                   # Number of games to play simultaneously.
   sort_by: "best"                  # Possible values: "best" and "first".
   accept_bot: true                 # Accepts challenges coming from other bots.
-  only_bot: true                  # Accept challenges by bots only.
-  max_increment: 1               # Maximum amount of increment to accept a challenge in seconds. The max is 180. Set to 0 for no increment.
+  only_bot: false                  # Accept challenges by bots only.
+  max_increment: 180               # Maximum amount of increment to accept a challenge in seconds. The max is 180. Set to 0 for no increment.
   min_increment: 0                 # Minimum amount of increment to accept a challenge in seconds.
-  max_base: 180                  # Maximum amount of base time to accept a challenge in seconds. The max is 10800 (3 hours).
+  max_base: 10800                  # Maximum amount of base time to accept a challenge in seconds. The max is 10800 (3 hours).
   min_base: 0                      # Minimum amount of base time to accept a challenge in seconds.
   #max_days: 14                    # Maximum number of days per move to accept a challenge for a correspondence game.
                                    # Unlimited games can be accepted by removing this field or specifying .inf
@@ -148,25 +148,20 @@ challenge:                         # Incoming challenges.
     #- racingKings
     #- threeCheck
   time_controls:                   # Time controls to accept (bots are not allowed to play ultraBullet).
-    - bullet
-    - blitz
-    - rapid
-    - classical
-    #- correspondence
-    #- unlimited
+     - bullet
+     - blitz
+     - rapid
+     - classical
+     - correspondence
+     - unlimited
   modes:                           # Game modes to accept.
     #- casual                       # Unrated games.
     - rated                        # Rated games - must comment if the engine doesn't try to win.
   block_list:                      # List of users from which the challenges are always declined.
-    #- YoBot_v2
-    #- TheMatrix2025
-    #- TheMatrix2029
-    #- ToromBot
-    #- Nikitosik-ai
-    #- Nikitosikbot_v2
+    - YoBot_v2
 # allow_list:                      # List of users from which challenges are exclusively accepted, all others being declined. If empty, challenges from all users may be accepted.
-#   - ttBot
-#   - PetersBot
+#   - user3
+#   - user4
 # recent_bot_challenge_age: 60     # Maximum age of a bot challenge to be considered recent in seconds
 # max_recent_bot_challenges: 2     # Maximum number of recent challenges that can be accepted from the same bot
   bullet_requires_increment: False # Require that bullet game challenges from bots have a non-zero increment
@@ -196,13 +191,14 @@ matchmaking:
     - 60
     - 180
     - 600
+    - 1800
   challenge_increment:             # Increment in seconds of the challenge (to be chosen at random).
     - 1
 #  challenge_days:                 # Days for correspondence challenge (to be chosen at random).
 #    - 1
 #    - 2
-  opponent_min_rating: 3000         # Opponents rating should be above this value (600 is the minimum rating in lichess).
-  opponent_max_rating: 4000        # Opponents rating should be below this value (4000 is the maximum rating in lichess).
+# opponent_min_rating: 600         # Opponents rating should be above this value (600 is the minimum rating in lichess).
+# opponent_max_rating: 4000        # Opponents rating should be below this value (4000 is the maximum rating in lichess).
   opponent_rating_difference: 300  # The maximum difference in rating between the bot's rating and opponent's rating.
   rating_preference: "high"        # One of "none", "high", "low".
   opponent_allow_tos_violation: false # Set to 'true' to allow challenging bots that violated the Lichess Terms of Service.
