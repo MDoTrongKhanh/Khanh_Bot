@@ -40,7 +40,7 @@ engine:                            # Engine settings.
     max_retries: 2                 # The maximum amount of retries when getting an online move.
     # max_depth: 10                # How many moves from the start to take from online books. Default is no limit.
     chessdb_book:
-      enabled: false               # Whether or not to use chessdb book.
+      enabled: true               # Whether or not to use chessdb book.
       min_time: 20                 # Minimum time (in seconds) to use chessdb book.
       move_quality: "best"         # One of "all", "good", "best".
       min_depth: 20                # Only for move_quality: "best".
