@@ -125,10 +125,10 @@ correspondence:
   ponder: false                    # Ponder in correspondence games the bot is connected to.
 
 challenge:                         # Incoming challenges.
-  concurrency: 10                   # Number of games to play simultaneously.
+  concurrency: 5                   # Number of games to play simultaneously.
   sort_by: "best"                  # Possible values: "best" and "first".
   accept_bot: true                 # Accepts challenges coming from other bots.
-  only_bot: false                  # Accept challenges by bots only.
+  only_bot: true                  # Accept challenges by bots only.
   max_increment: 180               # Maximum amount of increment to accept a challenge in seconds. The max is 180. Set to 0 for no increment.
   min_increment: 0                 # Minimum amount of increment to accept a challenge in seconds.
   max_base: 10800                  # Maximum amount of base time to accept a challenge in seconds. The max is 10800 (3 hours).
@@ -148,12 +148,12 @@ challenge:                         # Incoming challenges.
     #- racingKings
     #- threeCheck
   time_controls:                   # Time controls to accept (bots are not allowed to play ultraBullet).
-     - bullet
-     - blitz
-     - rapid
-     - classical
-     - correspondence
-     - unlimited
+    - bullet
+    - blitz
+    - rapid
+    - classical
+    #- correspondence
+    #- unlimited
   modes:                           # Game modes to accept.
     #- casual                       # Unrated games.
     - rated                        # Rated games - must comment if the engine doesn't try to win.
@@ -186,14 +186,13 @@ matchmaking:
   allow_matchmaking: true
   allow_during_games: true         # Set it to 'true' to create challenges during long games.
   challenge_variant: "standard"      # If set to 'random', the bot will choose one variant from the variants enabled in 'challenge.variants'.
-  challenge_timeout: 1            # Create a challenge after being idle for 'challenge_timeout' minutes. The minimum is 1 minute.
+  challenge_timeout: 15            # Create a challenge after being idle for 'challenge_timeout' minutes. The minimum is 1 minute.
   challenge_initial_time:          # Initial time in seconds of the challenge (to be chosen at random).
     - 60
     - 180
     - 600
-    - 1800
   challenge_increment:             # Increment in seconds of the challenge (to be chosen at random).
-    - 1
+    - 2
 #  challenge_days:                 # Days for correspondence challenge (to be chosen at random).
 #    - 1
 #    - 2
