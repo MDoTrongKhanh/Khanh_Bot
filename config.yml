@@ -3,18 +3,18 @@ url: "https://lichess.org/"        # Lichess base URL.
 
 engine:                            # Engine settings.
   dir: "./engines/"                # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
-  name: "stockfish-ubuntu-x86-64-sse41-popcnt"  # Binary name of the engine to use.
+  name: "stockfish"  # Binary name of the engine to use.
   working_dir: ""                  # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
                                    # NOTE: If working_dir is set, the engine will look for files and directories relative to this directory, not where lichess-bot was launched. Absolute paths are unaffected.
   protocol: "uci"                  # "uci", "xboard" or "homemade"
   ponder: true                     # Think on opponent's time.
 
   polyglot:
-    enabled: false                 # Activate polyglot book.
+    enabled: true                 # Activate polyglot book.
     book:
       standard:                    # List of book file paths for variant standard.
-        - engines/book1.bin
-        - engines/book2.bin
+        - "./engines/Titans.bin"
+        - "./engines/Perfect2023.bin"
 #     atomic:                      # List of book file paths for variant atomic.
 #       - engines/atomicbook1.bin
 #       - engines/atomicbook2.bin
@@ -31,7 +31,7 @@ engine:                            # Engine settings.
     resign_moves: 3                # How many moves in a row the score has to be below the resign value.
     offer_draw_enabled: false      # Whether or not the bot should offer/accept draw.
     offer_draw_score: 0            # If the absolute value of the score is less than or equal to this value, the bot offers/accepts draw (in cp).
-    offer_draw_for_egtb_zero: true # If true the bot will offer/accept draw in positions where the online_egtb returns a wdl of 0.
+    offer_draw_for_egtb_zero: false # If true the bot will offer/accept draw in positions where the online_egtb returns a wdl of 0.
     offer_draw_moves: 10           # How many moves in a row the absolute value of the score has to be below the draw value.
     offer_draw_pieces: 10          # Only if the pieces on board are less than or equal to this value, the bot offers/accepts draw.
 
@@ -40,9 +40,9 @@ engine:                            # Engine settings.
     max_retries: 2                 # The maximum amount of retries when getting an online move.
     # max_depth: 10                # How many moves from the start to take from online books. Default is no limit.
     chessdb_book:
-      enabled: false               # Whether or not to use chessdb book.
+      enabled: true               # Whether or not to use chessdb book.
       min_time: 20                 # Minimum time (in seconds) to use chessdb book.
-      move_quality: "good"         # One of "all", "good", "best".
+      move_quality: "best"         # One of "all", "good", "best".
       min_depth: 20                # Only for move_quality: "best".
     lichess_cloud_analysis:
       enabled: true                # Whether or not to use lichess cloud analysis.
@@ -87,9 +87,9 @@ engine:                            # Engine settings.
 #   Hash: 256
 
   uci_options:                     # Arbitrary UCI options passed to the engine.
-    #Move Overhead: 100            # Increase if your bot flags games too often.
-    #Threads: 4                    # Max CPU threads the engine can use.
-    #Hash: 512                     # Max memory (in megabytes) the engine can allocate.
+    Move Overhead: 200            # Increase if your bot flags games too often.
+    Threads: 4                    # Max CPU threads the engine can use.
+    Hash: 4096                     # Max memory (in megabytes) the engine can allocate.
     #SyzygyPath: "./syzygy/"       # Paths to Syzygy endgame tablebases that the engine reads.
     UCI_ShowWDL: true             # Show the chance of the engine winning.
 #   go_commands:                   # Additional options to pass to the UCI go command.
@@ -128,10 +128,10 @@ challenge:                         # Incoming challenges.
   concurrency: 5                   # Number of games to play simultaneously.
   sort_by: "best"                  # Possible values: "best" and "first".
   accept_bot: true                 # Accepts challenges coming from other bots.
-  only_bot: true                  # Accept challenges by bots only.
-  max_increment: 180               # Maximum amount of increment to accept a challenge in seconds. The max is 180. Set to 0 for no increment.
+  only_bot: false                  # Accept challenges by bots only.
+  max_increment: 1               # Maximum amount of increment to accept a challenge in seconds. The max is 180. Set to 0 for no increment.
   min_increment: 0                 # Minimum amount of increment to accept a challenge in seconds.
-  max_base: 10800                  # Maximum amount of base time to accept a challenge in seconds. The max is 10800 (3 hours).
+  max_base: 180                  # Maximum amount of base time to accept a challenge in seconds. The max is 10800 (3 hours).
   min_base: 0                      # Minimum amount of base time to accept a challenge in seconds.
   #max_days: 14                    # Maximum number of days per move to accept a challenge for a correspondence game.
                                    # Unlimited games can be accepted by removing this field or specifying .inf
@@ -158,10 +158,15 @@ challenge:                         # Incoming challenges.
     #- casual                       # Unrated games.
     - rated                        # Rated games - must comment if the engine doesn't try to win.
   block_list:                      # List of users from which the challenges are always declined.
-    - YoBot_v2
+    #- YoBot_v2
+    #- TheMatrix2025
+    #- TheMatrix2029
+    #- ToromBot
+    #- Nikitosik-ai
+    #- Nikitosikbot_v2
 # allow_list:                      # List of users from which challenges are exclusively accepted, all others being declined. If empty, challenges from all users may be accepted.
-#   - user3
-#   - user4
+#   - ttBot
+#   - PetersBot
 # recent_bot_challenge_age: 60     # Maximum age of a bot challenge to be considered recent in seconds
 # max_recent_bot_challenges: 2     # Maximum number of recent challenges that can be accepted from the same bot
   bullet_requires_increment: true # Require that bullet game challenges from bots have a non-zero increment
@@ -171,7 +176,7 @@ greeting:
   #   {opponent} to insert opponent's name
   #   {me} to insert bot's name
   # Any other words in curly braces will be removed.
-  hello: "Hi! I'm {me}. Type !help for a list of commands I can respond to. Good luck!" # Message to send to opponent chat at the start of a game
+  hello: "Hablo Dablo! I'm {me}. Type !help for a list of commands I can respond to. Good luck!" # Message to send to opponent chat at the start of a game
   goodbye: "Good game!" # Message to send to opponent chat at the end of a game
   hello_spectators: "Hi! I'm {me}. Type !help for a list of commands I can respond to." # Message to send to spectator chat at the start of a game
   goodbye_spectators: "Thanks for watching!" # Message to send to spectator chat at the end of a game
@@ -186,7 +191,7 @@ matchmaking:
   allow_matchmaking: true
   allow_during_games: true         # Set it to 'true' to create challenges during long games.
   challenge_variant: "standard"      # If set to 'random', the bot will choose one variant from the variants enabled in 'challenge.variants'.
-  challenge_timeout: 15            # Create a challenge after being idle for 'challenge_timeout' minutes. The minimum is 1 minute.
+  challenge_timeout: 1            # Create a challenge after being idle for 'challenge_timeout' minutes. The minimum is 1 minute.
   challenge_initial_time:          # Initial time in seconds of the challenge (to be chosen at random).
     - 60
     - 180
@@ -195,17 +200,15 @@ matchmaking:
 #  challenge_days:                 # Days for correspondence challenge (to be chosen at random).
 #    - 1
 #    - 2
-# opponent_min_rating: 600         # Opponents rating should be above this value (600 is the minimum rating in lichess).
-# opponent_max_rating: 4000        # Opponents rating should be below this value (4000 is the maximum rating in lichess).
+  opponent_min_rating: 3000         # Opponents rating should be above this value (600 is the minimum rating in lichess).
+  opponent_max_rating: 4000        # Opponents rating should be below this value (4000 is the maximum rating in lichess).
   opponent_rating_difference: 300  # The maximum difference in rating between the bot's rating and opponent's rating.
   rating_preference: "high"        # One of "none", "high", "low".
   opponent_allow_tos_violation: false # Set to 'true' to allow challenging bots that violated the Lichess Terms of Service.
   challenge_mode: "rated"         # Set it to the mode in which challenges are sent. Possible options are 'casual', 'rated' and 'random'.
   challenge_filter: none           # If a bot declines a challenge, do not issue a similar challenge to that bot. Possible options are 'none', 'coarse', and 'fine'.
-# block_list:                      # The list of bots that will not be challenged
-#   - user1
-#   - user2
-
+  block_list:                      # The list of bots that will not be challenged
+    - Nikitosikbot_v2
 # overrides:                       # List of overrides for the matchmaking specifications above. When a challenge is created, either the default specification above or one of the overrides will be randomly chosen.
 #   bullet_only_horde:             # Name of the override. Can be anything as long as each override has a unique name ("bullet_only_horde" and "easy_chess960" in these examples).
 #     challenge_variant: "horde"   # List of options to override. Only the options mentioned will change when making the challenge. The rest will follow the default matchmaking options above.
