@@ -87,7 +87,7 @@ engine:                            # Engine settings.
 #   Hash: 256
 
   uci_options:                     # Arbitrary UCI options passed to the engine.
-    Move Overhead: 195            # Increase if your bot flags games too often.
+    Move Overhead: 170            # Increase if your bot flags games too often.
     #Threads: 4                    # Max CPU threads the engine can use.
     #Hash: 4096                     # Max memory (in megabytes) the engine can allocate.
     #SyzygyPath: "./syzygy/"       # Paths to Syzygy endgame tablebases that the engine reads.
