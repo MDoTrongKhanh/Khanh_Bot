@@ -158,12 +158,12 @@ challenge:                         # Incoming challenges.
     #- casual                       # Unrated games.
     - rated                        # Rated games - must comment if the engine doesn't try to win.
   block_list:                      # List of users from which the challenges are always declined.
-    #- YoBot_v2
-    #- TheMatrix2025
-    #- TheMatrix2029
-    #- ToromBot
-    #- Nikitosik-ai
-    #- Nikitosikbot_v2
+    - YoBot_v2
+    - TheMatrix2025
+    - TheMatrix2029
+    - ToromBot
+    - Nikitosik-ai
+    - Nikitosikbot_v2
 # allow_list:                      # List of users from which challenges are exclusively accepted, all others being declined. If empty, challenges from all users may be accepted.
 #   - ttBot
 #   - PetersBot
