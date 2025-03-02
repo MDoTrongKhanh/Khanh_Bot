@@ -190,8 +190,6 @@ matchmaking:
   challenge_initial_time:          # Initial time in seconds of the challenge (to be chosen at random).
     - 60
     - 180
-    - 600
-    - 1800
   challenge_increment:             # Increment in seconds of the challenge (to be chosen at random).
     - 2
 #  challenge_days:                 # Days for correspondence challenge (to be chosen at random).
