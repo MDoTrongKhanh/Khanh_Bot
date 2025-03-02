@@ -157,10 +157,10 @@ challenge:                         # Incoming challenges.
     #- casual                       # Unrated games.
     - rated                        # Rated games - must comment if the engine doesn't try to win.
   block_list:                      # List of users from which the challenges are always declined.
-    - YoBot_v2
-    - TheMatrix2025
-    - TheMatrix2029
-    - ToromBot
+    #- YoBot_v2
+    #- TheMatrix2025
+    #- TheMatrix2029
+    #- ToromBot
     - Nikitosik-ai
     - Nikitosikbot_v2
 # allow_list:                      # List of users from which challenges are exclusively accepted, all others being declined. If empty, challenges from all users may be accepted.
@@ -208,10 +208,10 @@ matchmaking:
   challenge_mode: "rated"         # Set it to the mode in which challenges are sent. Possible options are 'casual', 'rated' and 'random'.
   challenge_filter: none           # If a bot declines a challenge, do not issue a similar challenge to that bot. Possible options are 'none', 'coarse', and 'fine'.
   block_list:                      # The list of bots that will not be challenged
-    - YoBot_v2
-    - TheMatrix2025
-    - TheMatrix2029
-    - ToromBot
+    #- YoBot_v2
+    #- TheMatrix2025
+    #- TheMatrix2029
+    #- ToromBot
     - Nikitosik-ai
     - Nikitosikbot_v2
 # overrides:                       # List of overrides for the matchmaking specifications above. When a challenge is created, either the default specification above or one of the overrides will be randomly chosen.
