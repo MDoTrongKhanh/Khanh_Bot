@@ -13,8 +13,7 @@ engine:                            # Engine settings.
     enabled: false                 # Activate polyglot book.
     book:
       standard:                    # List of book file paths for variant standard.
-        - engines/book1.bin
-        - engines/book2.bin
+        - ./engines/Perfect2023.bin
 #     atomic:                      # List of book file paths for variant atomic.
 #       - engines/atomicbook1.bin
 #       - engines/atomicbook2.bin
@@ -160,7 +159,7 @@ challenge:                         # Incoming challenges.
   block_list:                      # List of users from which the challenges are always declined.
     - YoBot_v2
   allow_list:                      # List of users from which challenges are exclusively accepted, all others being declined. If empty, challenges from all users may be accepted.
-    - Stockfish161Pro
+    - StockfishPro-2025
 # recent_bot_challenge_age: 60     # Maximum age of a bot challenge to be considered recent in seconds
 # max_recent_bot_challenges: 2     # Maximum number of recent challenges that can be accepted from the same bot
   bullet_requires_increment: False # Require that bullet game challenges from bots have a non-zero increment
@@ -205,7 +204,7 @@ matchmaking:
   challenge_mode: "rated"         # Set it to the mode in which challenges are sent. Possible options are 'casual', 'rated' and 'random'.
   challenge_filter: none           # If a bot declines a challenge, do not issue a similar challenge to that bot. Possible options are 'none', 'coarse', and 'fine'.
   allow_list:                      # The list of bots that will be challenged
-    - Stockfish161pro
+    - StockfishPro-2025
 
 # overrides:                       # List of overrides for the matchmaking specifications above. When a challenge is created, either the default specification above or one of the overrides will be randomly chosen.
 #   bullet_only_horde:             # Name of the override. Can be anything as long as each override has a unique name ("bullet_only_horde" and "easy_chess960" in these examples).
