@@ -86,9 +86,9 @@ engine:                            # Engine settings.
 #   Hash: 256
 
   uci_options:                     # Arbitrary UCI options passed to the engine.
-    #Move Overhead: 100            # Increase if your bot flags games too often.
-    #Threads: 4                    # Max CPU threads the engine can use.
-    #Hash: 512                     # Max memory (in megabytes) the engine can allocate.
+    Move Overhead: 195            # Increase if your bot flags games too often.
+    Threads: 4                    # Max CPU threads the engine can use.
+    Hash: 4096                     # Max memory (in megabytes) the engine can allocate.
     #SyzygyPath: "./syzygy/"       # Paths to Syzygy endgame tablebases that the engine reads.
     UCI_ShowWDL: true             # Show the chance of the engine winning.
 #   go_commands:                   # Additional options to pass to the UCI go command.
@@ -190,7 +190,7 @@ matchmaking:
   challenge_variant: "standard"      # If set to 'random', the bot will choose one variant from the variants enabled in 'challenge.variants'.
   challenge_timeout: 1            # Create a challenge after being idle for 'challenge_timeout' minutes. The minimum is 1 minute.
   challenge_initial_time:          # Initial time in seconds of the challenge (to be chosen at random).
-    #- 30
+    - 30
     - 60
     - 180
     #- 600
