@@ -60,7 +60,7 @@ engine:                            # Engine settings.
     online_egtb:
       enabled: true                # Whether or not to enable online endgame tablebases.
       min_time: 20                 # Minimum time (in seconds) the bot must have to use online EGTBs.
-      max_pieces: 8                # Maximum number of pieces on the board to use endgame tablebases.
+      max_pieces: 10                # Maximum number of pieces on the board to use endgame tablebases.
       source: "lichess"            # One of "lichess", "chessdb".
       move_quality: "best"         # One of "best" or "suggest" (it takes all the moves with the same WDL and tells the engine to only consider these; will move instantly if there is only 1 "good" move).
 
@@ -87,8 +87,8 @@ engine:                            # Engine settings.
 
   uci_options:                     # Arbitrary UCI options passed to the engine.
     Move Overhead: 195            # Increase if your bot flags games too often.
-    Threads: 4                    # Max CPU threads the engine can use.
-    Hash: 4096                     # Max memory (in megabytes) the engine can allocate.
+    #Threads: 4                    # Max CPU threads the engine can use.
+    #Hash: 4096                     # Max memory (in megabytes) the engine can allocate.
     #SyzygyPath: "./syzygy/"       # Paths to Syzygy endgame tablebases that the engine reads.
     UCI_ShowWDL: true             # Show the chance of the engine winning.
 #   go_commands:                   # Additional options to pass to the UCI go command.
