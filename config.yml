@@ -96,7 +96,7 @@ engine:                            # Engine settings.
 #   go_commands:                   # Additional options to pass to the UCI go command.
 #     nodes: 1000000               # Giới hạn số nút tìm kiếm.
 #     depth: 20                    # Tăng độ sâu để tìm nước đi chính xác hơn.
-      movetime: 1500               # Dành thêm thời gian tính toán.
+  movetime: 1500               # Dành thêm thời gian tính toán.
 
 # xboard_options:                  # Arbitrary XBoard options passed to the engine.
 #   cores: "4"
