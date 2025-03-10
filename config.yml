@@ -87,7 +87,7 @@ engine:                            # Engine settings.
 #   Hash: 256
 
   uci_options:                     # Arbitrary UCI options passed to the engine.
-    Move Overhead: 200            # Giảm khả năng bị hết thời gian.
+    Move Overhead: 150            # Giảm khả năng bị hết thời gian.
     Threads: 4                    # Sử dụng nhiều luồng CPU hơn.
     Hash: 1024                    # Tăng bộ nhớ đệm để tăng tốc độ tìm nước đi.
     UCI_LimitStrength: false       # Đảm bảo không giới hạn sức mạnh.
@@ -97,7 +97,7 @@ engine:                            # Engine settings.
 #   go_commands:                   # Additional options to pass to the UCI go command.
 #     nodes: 1000000               # Giới hạn số nút tìm kiếm.
 #     depth: 20                    # Tăng độ sâu để tìm nước đi chính xác hơn.
-#     movetime: 2000               # Dành thêm thời gian tính toán.
+     movetime: 1000               # Dành thêm thời gian tính toán.
 
 # xboard_options:                  # Arbitrary XBoard options passed to the engine.
 #   cores: "4"
