@@ -13,6 +13,9 @@ engine:                            # Engine settings.
     enabled: false                 # Activate polyglot book.
     book:
       standard:                    # List of book file paths for variant standard.
+        - ./engines/OlishFish.bin
+        - ./engines/OPTIMUS.bin
+        - ./engines/Raid.bin
         - ./engines/Perfect2023.bin
 #     atomic:                      # List of book file paths for variant atomic.
 #       - engines/atomicbook1.bin
